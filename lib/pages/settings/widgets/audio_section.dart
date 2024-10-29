@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 class AudioSection extends StatelessWidget {
@@ -7,12 +9,12 @@ class AudioSection extends StatelessWidget {
   final Function(double) tickingVolumeCallback;
 
   const AudioSection({
-    Key? key,
+    super.key,
     required this.ringingVolume,
     required this.tickingVolume,
     required this.ringingVolumeCallback,
     required this.tickingVolumeCallback,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

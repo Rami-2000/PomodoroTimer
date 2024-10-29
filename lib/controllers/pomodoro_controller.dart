@@ -12,10 +12,8 @@ enum PomodoroStatus {
 
 class PomodoroController extends GetxController
     with GetSingleTickerProviderStateMixin {
-
   final AudioController _audioController = Get.find<AudioController>();
   final SettingsController _settingsController = Get.find<SettingsController>();
-
 
   late final AnimationController _animationController;
   late final animation;
@@ -57,7 +55,7 @@ class PomodoroController extends GetxController
 
   void completed() {
     _index++;
-    if(_pomodoroDurationList.length <= _index) {
+    if (_pomodoroDurationList.length <= _index) {
       _index = 0;
     }
 

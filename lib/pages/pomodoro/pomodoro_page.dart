@@ -1,3 +1,4 @@
+import 'package:flutter_pomodoro_master/pages/tasks/task_page.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ import './widgets/main_body.dart';
 class PomodoroPage extends GetView<PomodoroController> {
   static const routeName = '/pomodoro';
 
-  const PomodoroPage({Key? key}) : super(key: key);
+  const PomodoroPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +37,8 @@ class PomodoroPage extends GetView<PomodoroController> {
                 left: 20,
                 child: TextButton(
                   onPressed: controller.reset,
-                  child: Column(
-                    children: const [
+                  child: const Column(
+                    children: [
                       Icon(
                         Icons.undo,
                         color: Colors.white70,
@@ -59,10 +60,10 @@ class PomodoroPage extends GetView<PomodoroController> {
             right: 20,
             child: TextButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(SettingsPage.routeName);
+                Get.toNamed(SettingsPage.routeName);
               },
-              child: Column(
-                children: const [
+              child: const Column(
+                children: [
                   Icon(
                     Icons.settings,
                     color: Colors.white70,
@@ -88,81 +89,23 @@ class PomodoroPage extends GetView<PomodoroController> {
                 // Navigate to TaskPage
                 Get.toNamed(TaskPage.routeName);
               },
-              child: Icon(Icons.task),
               tooltip: 'Go to Task Page',
+              child: const Icon(Icons.task),
             ),
-            SizedBox(height: 10), // Space between buttons
-            FloatingActionButton(
-              onPressed: () {
-                // Action to add a new task
-                Get.dialog(AddTaskDialog());
-              },
-              child: Icon(Icons.add),
-              tooltip: 'Add Task',
-            ),
-            SizedBox(height: 10), // Space between buttons
+            const SizedBox(height: 10), // Space between buttons
             FloatingActionButton(
               onPressed: controller.status.value == PomodoroStatus.started
                   ? controller.stop
                   : controller.start,
+              tooltip: 'Start/Stop Pomodoro',
               child: Icon(controller.status.value == PomodoroStatus.started
                   ? Icons.pause
                   : Icons.play_arrow),
-              tooltip: 'Start/Stop Pomodoro',
             ),
           ],
         );
       }),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-    );
-  }
-}
-
-class AddTaskDialog extends StatelessWidget {
-  final TextEditingController _taskController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text('Add Task'),
-      content: TextField(
-        controller: _taskController,
-        decoration: InputDecoration(hintText: 'Enter your task'),
-      ),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Get.back();
-          },
-          child: Text('Cancel'),
-        ),
-        TextButton(
-          onPressed: () {
-            if (_taskController.text.isNotEmpty) {
-              // Add your task management logic here
-              // For example, add the task to a list or storage
-              Get.back();
-            }
-          },
-          child: Text('Add'),
-        ),
-      ],
-    );
-  }
-}
-
-class TaskPage extends StatelessWidget {
-  static const routeName = '/task';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Task Page'),
-      ),
-      body: Center(
-        child: Text('Task Page Content Here', style: TextStyle(fontSize: 20)),
-      ),
     );
   }
 }

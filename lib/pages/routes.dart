@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pomodoro_master/controllers/pomodoro_binding.dart';
 import 'package:flutter_pomodoro_master/controllers/settings_binding.dart';
+import 'package:flutter_pomodoro_master/controllers/tasks_binding.dart';
 import 'package:flutter_pomodoro_master/pages/pomodoro/pomodoro_page.dart';
 import 'package:flutter_pomodoro_master/pages/settings/settings_page.dart';
+import 'package:flutter_pomodoro_master/pages/tasks/task_page.dart';
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-import '../../controllers/pomodoro_controller.dart';
+
 void main() async {
   await GetStorage.init();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
           name: PomodoroPage.routeName,
-          page: () => PomodoroPage(),
+          page: () => const PomodoroPage(),
           bindings: [
             PomodoroBinding(),
             SettingsBinding(),
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: TaskPage.routeName,
           page: () => TaskPage(),
+          binding: TasksBinding(),
         ),
       ],
       initialRoute: PomodoroPage.routeName,

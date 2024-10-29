@@ -4,8 +4,8 @@ class MainBody extends StatelessWidget {
   final double iconSize = 48;
 
   const MainBody({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class MainBody extends StatelessWidget {
           width: constraints.maxWidth,
           height: constraints.maxHeight,
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 204, 17, 17),
+            color: const Color.fromARGB(255, 204, 17, 17),
             gradient: LinearGradient(
               colors: [
                 // Color(0xFFCB2611),

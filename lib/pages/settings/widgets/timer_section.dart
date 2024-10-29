@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_pomodoro_master/constants.dart';
 
@@ -11,14 +13,14 @@ class TimerSection extends StatelessWidget {
   final Function(int?) shortBreakDurationCallback;
 
   const TimerSection({
-    Key? key,
+    super.key,
     required this.pomodoroDuration,
     required this.longBreakDuration,
     required this.shortBreakDuration,
     required this.pomodoroDurationCallback,
     required this.longBreakDurationCallback,
     required this.shortBreakDurationCallback,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -6,10 +6,10 @@ class ClockCap extends StatelessWidget {
   final double barWidth = 25;
 
   const ClockCap({
-    Key? key,
+    super.key,
     required this.barCount,
     required this.progression,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

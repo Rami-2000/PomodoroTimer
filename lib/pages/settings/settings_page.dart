@@ -8,7 +8,7 @@ import 'widgets/timer_section.dart';
 class SettingsPage extends GetView<SettingsController> {
   static const routeName = '/settings';
 
-  const SettingsPage({Key? key}) : super(key: key);
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
